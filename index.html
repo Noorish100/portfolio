@@ -1,728 +1,203 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Md Noorish Nauman | Java Backend Developer</title>
-    <meta
-      name="description"
-      content="Java backend developer building Spring Boot microservices and REST APIs."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <script>
-      document.documentElement.classList.add("js");
-    </script>
-    <style>
-      :root {
-        --bg: #0e1514;
-        --bg2: #141d1b;
-        --ink: #e9f1ee;
-        --mute: #9bb0aa;
-        --line: #233230;
-        --acc: #5fd0a5;
-        --accink: #08130f;
-      }
-      @media (prefers-color-scheme: light) {
-        :root {
-          --bg: #f7f6f1;
-          --bg2: #fff;
-          --ink: #16211e;
-          --mute: #566863;
-          --line: #dcded4;
-          --acc: #157a5a;
-          --accink: #fff;
-        }
-      }
-      * {
-        box-sizing: border-box;
-        margin: 0;
-      }
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 70px;
-      }
-      body {
-        background: var(--bg);
-        color: var(--ink);
-        font:
-          16px/1.65 Inter,
-          system-ui,
-          sans-serif;
-      }
-      a {
-        color: inherit;
-      }
-      .wrap {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-      h1,
-      h2,
-      h3 {
-        font-family: Fraunces, Georgia, serif;
-        line-height: 1.2;
-      }
-      section {
-        padding: 72px 0;
-      }
-      h2 {
-        font-size: 1.9rem;
-        margin-bottom: 28px;
-      }
-      h2 small {
-        display: block;
-        font:
-          600 0.8rem Inter,
-          sans-serif;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--acc);
-        margin-bottom: 6px;
-      }
-      header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 10;
-        background: color-mix(in srgb, var(--bg) 88%, transparent);
-        backdrop-filter: blur(10px);
-        border-bottom: 1px solid var(--line);
-      }
-      header .wrap {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 60px;
-      }
-      .brand {
-        font:
-          700 1.1rem Fraunces,
-          serif;
-        text-decoration: none;
-      }
-      nav ul {
-        display: flex;
-        gap: 22px;
-        list-style: none;
-        padding: 0;
-      }
-      nav a {
-        text-decoration: none;
-        color: var(--mute);
-        font-size: 0.95rem;
-      }
-      nav a:hover {
-        color: var(--ink);
-      }
-      .burger {
-        display: none;
-        background: none;
-        border: 1px solid var(--line);
-        color: var(--ink);
-        border-radius: 6px;
-        padding: 6px 12px;
-        font: inherit;
-        cursor: pointer;
-      }
-      .hero {
-        padding: 140px 0 72px;
-      }
-      .hero p.k {
-        color: var(--acc);
-        font-weight: 600;
-        margin-bottom: 10px;
-      }
-      .hero h1 {
-        font-size: clamp(2.2rem, 6vw, 3.8rem);
-      }
-      .hero p.s {
-        max-width: 640px;
-        color: var(--mute);
-        font-size: 1.1rem;
-        margin: 18px 0 28px;
-      }
-      .row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-      .btn {
-        display: inline-block;
-        padding: 11px 20px;
-        border-radius: 8px;
-        font-weight: 600;
-        text-decoration: none;
-        border: 1px solid var(--line);
-        background: none;
-        color: var(--ink);
-        cursor: pointer;
-        font:
-          600 1rem Inter,
-          sans-serif;
-      }
-      .btn.p {
-        background: var(--acc);
-        color: var(--accink);
-        border-color: var(--acc);
-      }
-      .btn:hover {
-        filter: brightness(1.1);
-      }
-      :focus-visible {
-        outline: 3px solid var(--acc);
-        outline-offset: 2px;
-      }
-      .stats {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 14px;
-        margin-top: 48px;
-      }
-      .stat {
-        background: var(--bg2);
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        padding: 16px;
-      }
-      .stat b {
-        display: block;
-        font:
-          700 1.7rem Fraunces,
-          serif;
-        color: var(--acc);
-      }
-      .stat span {
-        color: var(--mute);
-        font-size: 0.88rem;
-      }
-      .about p {
-        max-width: 720px;
-        color: var(--mute);
-        margin-bottom: 14px;
-      }
-      .skills {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-      }
-      .card {
-        background: var(--bg2);
-        border: 1px solid var(--line);
-        border-radius: 10px;
-        padding: 18px;
-      }
-      .card h3 {
-        font-size: 1rem;
-        margin-bottom: 10px;
-      }
-      .chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .chips span {
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        padding: 3px 12px;
-        font-size: 0.88rem;
-        color: var(--mute);
-      }
-      .job {
-        border-left: 2px solid var(--line);
-        padding: 0 0 28px 22px;
-        position: relative;
-      }
-      .job:before {
-        content: "";
-        position: absolute;
-        left: -6px;
-        top: 6px;
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--acc);
-      }
-      .job h3 {
-        font-size: 1.15rem;
-      }
-      .job .m {
-        color: var(--mute);
-        font-size: 0.9rem;
-        margin: 2px 0 10px;
-      }
-      .job ul {
-        padding-left: 18px;
-        color: var(--mute);
-      }
-      .job li {
-        margin-bottom: 6px;
-      }
-      .cols {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
-      }
-      .card p {
-        color: var(--mute);
-        font-size: 0.95rem;
-      }
-      .contact {
-        display: grid;
-        grid-template-columns: 1fr 1.2fr;
-        gap: 28px;
-      }
-      .contact ul {
-        list-style: none;
-        padding: 0;
-        color: var(--mute);
-      }
-      .contact li {
-        margin-bottom: 10px;
-      }
-      .contact a {
-        color: var(--acc);
-      }
-      form {
-        display: grid;
-        gap: 12px;
-      }
-      input,
-      textarea {
-        width: 100%;
-        padding: 11px 12px;
-        border-radius: 8px;
-        border: 1px solid var(--line);
-        background: var(--bg2);
-        color: var(--ink);
-        font: inherit;
-      }
-      form small {
-        color: var(--mute);
-      }
-      footer {
-        border-top: 1px solid var(--line);
-        padding: 24px 0;
-        color: var(--mute);
-        font-size: 0.9rem;
-        text-align: center;
-      }
-      .js .rv {
-        opacity: 0;
-        transform: translateY(16px);
-        transition:
-          opacity 0.6s,
-          transform 0.6s;
-      }
-      .js .rv.in {
-        opacity: 1;
-        transform: none;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .js .rv {
-          opacity: 1;
-          transform: none;
-          transition: none;
-        }
-        html {
-          scroll-behavior: auto;
-        }
-      }
-      @media (max-width: 760px) {
-        .burger {
-          display: block;
-        }
-        nav ul {
-          display: none;
-          position: absolute;
-          top: 60px;
-          left: 0;
-          right: 0;
-          flex-direction: column;
-          gap: 0;
-          background: var(--bg);
-          border-bottom: 1px solid var(--line);
-          padding: 8px 20px;
-        }
-        nav ul.open {
-          display: flex;
-        }
-        nav li a {
-          display: block;
-          padding: 12px 0;
-        }
-        .stats {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .skills,
-        .cols,
-        .contact {
-          grid-template-columns: 1fr;
-        }
-        section {
-          padding: 56px 0;
-        }
-        .hero {
-          padding-top: 110px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <div class="wrap">
-        <a class="brand" href="#top">Noorish Nauman</a>
-        <button class="burger" aria-expanded="false" aria-controls="menu">
-          Menu
-        </button>
-        <nav>
-          <ul id="menu">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Md Noorish Nauman | Java Backend Developer</title>
+<meta name="description" content="Java backend developer building Spring Boot microservices and REST APIs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+:root{--bg:#0e1514;--bg2:#141d1b;--ink:#e9f1ee;--mute:#9bb0aa;--line:#233230;--acc:#5fd0a5;--accink:#08130f}
+@media (prefers-color-scheme:light){:root{--bg:#f7f6f1;--bg2:#fff;--ink:#16211e;--mute:#566863;--line:#dcded4;--acc:#157a5a;--accink:#fff}}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif}
+a{color:inherit}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.2}
+section{padding:72px 0}
+h2{font-size:1.9rem;margin-bottom:28px}
+h2 small{display:block;font:600 .8rem Inter,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+header{position:fixed;top:0;left:0;right:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font:700 1.1rem Fraunces,serif;text-decoration:none}
+nav ul{display:flex;gap:22px;list-style:none;padding:0}
+nav a{text-decoration:none;color:var(--mute);font-size:.95rem}
+nav a:hover{color:var(--ink)}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:6px;padding:6px 12px;font:inherit;cursor:pointer}
+.hero{padding:140px 0 72px}
+.hero p.k{color:var(--acc);font-weight:600;margin-bottom:10px}
+.hero h1{font-size:clamp(2.2rem,6vw,3.8rem)}
+.hero p.s{max-width:640px;color:var(--mute);font-size:1.1rem;margin:18px 0 28px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:11px 20px;border-radius:8px;font-weight:600;text-decoration:none;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;font:600 1rem Inter,sans-serif}
+.btn.p{background:var(--acc);color:var(--accink);border-color:var(--acc)}
+.btn:hover{filter:brightness(1.1)}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:48px}
+.stat{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:16px}
+.stat b{display:block;font:700 1.7rem Fraunces,serif;color:var(--acc)}
+.stat span{color:var(--mute);font-size:.88rem}
+.about p{max-width:720px;color:var(--mute);margin-bottom:14px}
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:18px}
+.card h3{font-size:1rem;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:.88rem;color:var(--mute)}
+.job{border-left:2px solid var(--line);padding:0 0 28px 22px;position:relative}
+.job:before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--acc)}
+.job h3{font-size:1.15rem}
+.job .m{color:var(--mute);font-size:.9rem;margin:2px 0 10px}
+.job ul{padding-left:18px;color:var(--mute)}
+.job li{margin-bottom:6px}
+.cols{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card p{color:var(--mute);font-size:.95rem}
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:28px}
+.contact ul{list-style:none;padding:0;color:var(--mute)}
+.contact li{margin-bottom:10px}
+.contact a{color:var(--acc)}
+form{display:grid;gap:12px}
+input,textarea{width:100%;padding:11px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg2);color:var(--ink);font:inherit}
+form small{color:var(--mute)}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--mute);font-size:.9rem;text-align:center}
+.js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media (max-width:760px){
+.burger{display:block}
+nav ul{display:none;position:absolute;top:60px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px 20px}
+nav ul.open{display:flex}
+nav li a{display:block;padding:12px 0}
+.stats{grid-template-columns:repeat(2,1fr)}
+.skills,.cols,.contact{grid-template-columns:1fr}
+section{padding:56px 0}
+.hero{padding-top:110px}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<a class="brand" href="#top">Noorish Nauman</a>
+<button class="burger" aria-expanded="false" aria-controls="menu">Menu</button>
+<nav><ul id="menu">
+<li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#experience">Experience</a></li><li><a href="#work">Work</a></li><li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li>
+</ul></nav>
+</div></header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="wrap">
-          <p class="k">Hello, I'm</p>
-          <h1>Md Noorish Nauman</h1>
-          <p class="s">
-            Java backend developer building secure, reliable microservices and
-            REST APIs with Spring Boot.
-          </p>
-          <div class="row">
-            <a class="btn p" href="mailto:mdnoorishnauman@gmail.com"
-              >Email me</a
-            >
-            <a
-              class="btn"
-              href="https://drive.google.com/file/d/10ykX8AQGfXEsD5j0zqFey8dLaUXNRcqh/view?usp=share_link"
-              target="_blank"
-              rel="noopener"
-              >Resume</a
-            >
-            <a
-              class="btn"
-              href="https://github.com/Noorish100"
-              target="_blank"
-              rel="noopener"
-              >GitHub</a
-            >
-            <a
-              class="btn"
-              href="https://www.linkedin.com/in/noorish-nauman/"
-              target="_blank"
-              rel="noopener"
-              >LinkedIn</a
-            >
-          </div>
-          <div class="stats">
-            <div class="stat">
-              <b>10+</b><span>backend microservices features</span>
-            </div>
-            <div class="stat">
-              <b>30%</b><span>faster API response time</span>
-            </div>
-            <div class="stat"><b>99.9%</b><span>production uptime</span></div>
-            <div class="stat">
-              <b>0 downtime</b><span>Elasticsearch v6 to v8 upgrade</span>
-            </div>
-          </div>
-        </div>
-      </section>
+<main id="top">
+<section class="hero"><div class="wrap">
+<p class="k">Hello, I'm</p>
+<h1>Md Noorish Nauman</h1>
+<p class="s">Java backend developer building secure, reliable microservices and REST APIs with Spring Boot.</p>
+<div class="row">
+<a class="btn p" href="mailto:mdnoorishnauman@gmail.com">Email me</a>
+<a class="btn" href="https://drive.google.com/file/d/10UuO9Qy9Nn0kqDmQzp-5qeIOefI0sGlg/view?usp=sharing" target="_blank" rel="noopener">Resume</a>
+<a class="btn" href="https://github.com/Noorish100" target="_blank" rel="noopener">GitHub</a>
+<a class="btn" href="https://www.linkedin.com/in/noorish-nauman/" target="_blank" rel="noopener">LinkedIn</a>
+</div>
+<div class="stats">
+<div class="stat"><b>10+</b><span>backend microservices features</span></div>
+<div class="stat"><b>30%</b><span>faster API response time</span></div>
+<div class="stat"><b>99.9%</b><span>production uptime</span></div>
+<div class="stat"><b>0 downtime</b><span>Elasticsearch v6 to v8 upgrade</span></div>
+</div>
+</div></section>
 
-      <section id="about">
-        <div class="wrap about rv">
-          <h2><small>About</small>Backend engineering, built to last</h2>
-          <p>
-            I design and ship REST APIs and microservices in Java and Spring
-            Boot, with a focus on security, reliability and performance. Day to
-            day I work in an Agile team, handle load-testing and SLO work, and
-            monitor services running on Docker and Kubernetes.
-          </p>
-          <p>
-            I am also learning how LLMs and prompt engineering can improve
-            backend development, and use GitHub Copilot in my daily workflow.
-          </p>
-        </div>
-      </section>
+<section id="about"><div class="wrap about rv">
+<h2><small>About</small>Backend engineering, built to last</h2>
+<p>I design and ship REST APIs and microservices in Java and Spring Boot, with a focus on security, reliability and performance. Day to day I work in an Agile team, handle load-testing and SLO work, and monitor services running on Docker and Kubernetes.</p>
+<p>I am also learning how LLMs and prompt engineering can improve backend development, and use GitHub Copilot in my daily workflow.</p>
+</div></section>
 
-      <section id="skills">
-        <div class="wrap rv">
-          <h2><small>Skills</small>What I work with</h2>
-          <div class="skills">
-            <div class="card">
-              <h3>Backend and architecture</h3>
-              <div class="chips">
-                <span>Java</span><span>Spring Boot</span><span>Quarkus</span
-                ><span>Microservices</span><span>REST APIs</span
-                ><span>System design</span><span>DSA</span
-                ><span>Design patterns</span>
-              </div>
-            </div>
-            <div class="card">
-              <h3>Databases and messaging</h3>
-              <div class="chips">
-                <span>MySQL</span><span>MSSQL</span><span>Apache Kafka</span
-                ><span>Elasticsearch</span>
-              </div>
-            </div>
-            <div class="card">
-              <h3>Cloud and DevOps</h3>
-              <div class="chips">
-                <span>Azure</span><span>Docker</span><span>Kubernetes</span
-                ><span>CI/CD</span><span>Grafana</span><span>OpenLens</span
-                ><span>Dynatrace</span><span>K6</span>
-              </div>
-            </div>
-            <div class="card">
-              <h3>Security</h3>
-              <div class="chips">
-                <span>OAuth 2.0</span><span>JWT</span><span>RBAC</span>
-              </div>
-            </div>
-            <div class="card">
-              <h3>AI and tools</h3>
-              <div class="chips">
-                <span>LLM integration</span><span>Prompt engineering</span
-                ><span>GitHub Copilot</span><span>Git</span><span>Maven</span
-                ><span>JUnit</span><span>Mockito</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+<section id="skills"><div class="wrap rv">
+<h2><small>Skills</small>What I work with</h2>
+<div class="skills">
+<div class="card"><h3>Backend and architecture</h3><div class="chips"><span>Java</span><span>Spring Boot</span><span>Quarkus</span><span>Microservices</span><span>REST APIs</span><span>System design</span><span>DSA</span><span>Design patterns</span></div></div>
+<div class="card"><h3>Databases and messaging</h3><div class="chips"><span>MySQL</span><span>MSSQL</span><span>Apache Kafka</span><span>Elasticsearch</span></div></div>
+<div class="card"><h3>Cloud and DevOps</h3><div class="chips"><span>Azure</span><span>Docker</span><span>Kubernetes</span><span>CI/CD</span><span>Grafana</span><span>OpenLens</span><span>Dynatrace</span><span>K6</span></div></div>
+<div class="card"><h3>Security</h3><div class="chips"><span>OAuth 2.0</span><span>JWT</span><span>RBAC</span></div></div>
+<div class="card"><h3>AI and tools</h3><div class="chips"><span>LLM integration</span><span>Prompt engineering</span><span>GitHub Copilot</span><span>Git</span><span>Maven</span><span>JUnit</span><span>Mockito</span></div></div>
+</div>
+</div></section>
 
-      <section id="experience">
-        <div class="wrap rv">
-          <h2><small>Experience</small>Where I have worked</h2>
-          <div class="job">
-            <h3>Software Engineer 2</h3>
-            <p class="m">Sep 2024 to present</p>
-            <ul>
-              <li>
-                Build features for an enterprise transportation-industry product
-                covering organizations, accounts and system admin.
-              </li>
-              <li>
-                Built and improved signup flows for two products, including
-                individual and guest paths.
-              </li>
-              <li>Upgraded Elasticsearch from v6 to v8 with zero downtime.</li>
-              <li>Work on load-testing, SLO burn, NFR and CVE fix stories.</li>
-              <li>
-                Monitor services with Grafana, OpenLens and Dynatrace, and
-                release through Azure pipelines to dev, test and prod.
-              </li>
-            </ul>
-          </div>
-          <div class="job">
-            <h3>Software Engineer</h3>
-            <p class="m">Feb 2023 to Jun 2024</p>
-            <ul>
-              <li>
-                Built REST APIs for B2B user lifecycle workflows, from
-                onboarding to offboarding.
-              </li>
-              <li>
-                Designed a multi-currency transaction system for cross-region
-                payments.
-              </li>
-              <li>
-                Improved API response time by 30% by optimizing queries and
-                simplifying the service architecture.
-              </li>
-              <li>Added JWT authentication and role-based access control.</li>
-            </ul>
-          </div>
-          <div class="job">
-            <h3>Software Engineer Intern</h3>
-            <p class="m">Aug 2022 to Feb 2023</p>
-            <ul>
-              <li>
-                Built user profile and identity-verification modules for a bank
-                loan application.
-              </li>
-              <li>
-                Integrated third-party identity APIs to simplify KYC checks.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+<section id="experience"><div class="wrap rv">
+<h2><small>Experience</small>Where I have worked</h2>
+<div class="job"><h3>Software Engineer 2</h3><p class="m">Sep 2024 to present</p><ul>
+<li>Build features for an enterprise transportation-industry product covering organizations, accounts and system admin.</li>
+<li>Built and improved signup flows for two products, including individual and guest paths.</li>
+<li>Upgraded Elasticsearch from v6 to v8 with zero downtime.</li>
+<li>Work on load-testing, SLO burn, NFR and CVE fix stories.</li>
+<li>Monitor services with Grafana, OpenLens and Dynatrace, and release through Azure pipelines to dev, test and prod.</li></ul></div>
+<div class="job"><h3>Software Engineer</h3><p class="m">Feb 2023 to Jun 2024</p><ul>
+<li>Built REST APIs for B2B user lifecycle workflows, from onboarding to offboarding.</li>
+<li>Designed a multi-currency transaction system for cross-region payments.</li>
+<li>Improved API response time by 30% by optimizing queries and simplifying the service architecture.</li>
+<li>Added JWT authentication and role-based access control.</li></ul></div>
+<div class="job"><h3>Software Engineer Intern</h3><p class="m">Aug 2022 to Feb 2023</p><ul>
+<li>Built user profile and identity-verification modules for a bank loan application.</li>
+<li>Integrated third-party identity APIs to simplify KYC checks.</li></ul></div>
+</div></section>
 
-      <section id="work">
-        <div class="wrap rv">
-          <h2><small>Work</small>Project highlights</h2>
-          <div class="cols">
-            <div class="card">
-              <h3>Platform microservices system</h3>
-              <p>
-                Worked on 10+ backend microservices features, improving
-                modularity and making deployments faster.
-              </p>
-            </div>
-            <div class="card">
-              <h3>Bulk upload module</h3>
-              <p>
-                Built backend services for large-scale data uploads, connected
-                to a frontend interface for users.
-              </p>
-            </div>
-          </div>
-          <p style="margin-top: 18px; color: var(--mute)">
-            More code on
-            <a
-              href="https://github.com/Noorish100"
-              target="_blank"
-              rel="noopener"
-              style="color: var(--acc)"
-              >GitHub</a
-            >.
-          </p>
-        </div>
-      </section>
+<section id="work"><div class="wrap rv">
+<h2><small>Work</small>Project highlights</h2>
+<div class="cols">
+<div class="card"><h3>Platform microservices system</h3><p>Worked on 10+ backend microservices features, improving modularity and making deployments faster.</p></div>
+<div class="card"><h3>Bulk upload module</h3><p>Built backend services for large-scale data uploads, connected to a frontend interface for users.</p></div>
+</div>
+<h3 style="margin:36px 0 16px;font-size:1.2rem">Personal projects</h3>
+<div class="cols">
+<div class="card"><h3>Microservices project</h3><p>Multiple microservices with a service registry, an API gateway, and User and Contact services.</p><div class="chips" style="margin:10px 0"><span>Java</span><span>Spring Boot</span><span>API Gateway</span><span>Service Registry</span></div><a href="https://github.com/Noorish100/MicroServiceProject" target="_blank" rel="noopener" style="color:var(--acc)">View code</a></div><div class="card"><h3>Customer management system</h3><p>CRUD application for managing customers, with JWT-based security.</p><div class="chips" style="margin:10px 0"><span>Java</span><span>Spring Boot</span><span>MySQL</span><span>JWT</span></div><a href="https://github.com/Noorish100/Customer-Management-System" target="_blank" rel="noopener" style="color:var(--acc)">View code</a></div><div class="card"><h3>Battery management system</h3><p>Backend that receives periodic data from batteries on electric vehicles and stores it in a database.</p><div class="chips" style="margin:10px 0"><span>Java</span><span>Spring Boot</span><span>REST APIs</span></div><a href="https://github.com/Noorish100/Battery_Management_System" target="_blank" rel="noopener" style="color:var(--acc)">View code</a></div><div class="card"><h3>Online food delivery backend</h3><p>REST API that persists customer orders, with authorization limiting which CRUD operations each user can access.</p><div class="chips" style="margin:10px 0"><span>Java</span><span>Spring Boot</span><span>REST APIs</span><span>Authorization</span></div><a href="https://github.com/Noorish100/online_food_delivery_app-backend-" target="_blank" rel="noopener" style="color:var(--acc)">View code</a></div>
+</div>
+<p style="margin-top:18px;color:var(--mute)">More code on <a href="https://github.com/Noorish100" target="_blank" rel="noopener" style="color:var(--acc)">GitHub</a>.</p>
+</div></section>
 
-      <section id="education">
-        <div class="wrap rv">
-          <h2><small>Education</small>Learning path</h2>
-          <div class="cols">
-            <div class="card">
-              <h3>Full Stack Web Development</h3>
-              <p>Masai School, 2021 to 2022</p>
-            </div>
-            <div class="card">
-              <h3>B.Tech, Mechanical Engineering</h3>
-              <p>KIET Group of Institutions, 2016 to 2020</p>
-            </div>
-          </div>
-        </div>
-      </section>
+<section id="education"><div class="wrap rv">
+<h2><small>Education</small>Learning path</h2>
+<div class="cols">
+<div class="card"><h3>Full Stack Web Development</h3><p>Masai School, 2021 to 2022</p></div>
+<div class="card"><h3>B.Tech, Mechanical Engineering</h3><p>KIET Group of Institutions, 2016 to 2020</p></div>
+</div>
+</div></section>
 
-      <section id="contact">
-        <div class="wrap rv">
-          <h2><small>Contact</small>Let's talk</h2>
-          <div class="contact">
-            <div>
-              <p style="color: var(--mute); margin-bottom: 16px">
-                Open to Java backend roles. Send me a message and I will reply
-                by email.
-              </p>
-              <ul>
-                <li>
-                  Email:
-                  <a href="mailto:mdnoorishnauman@gmail.com"
-                    >mdnoorishnauman@gmail.com</a
-                  >
-                </li>
-                <li>Phone: <a href="tel:+919927620365">+91-9927620365</a></li>
-                <li>
-                  LinkedIn:
-                  <a
-                    href="https://www.linkedin.com/in/noorish-nauman/"
-                    target="_blank"
-                    rel="noopener"
-                    >noorish-nauman</a
-                  >
-                </li>
-                <li>Location: Noida, India</li>
-              </ul>
-            </div>
-            <form id="f">
-              <input
-                id="n"
-                placeholder="Your name"
-                required
-                aria-label="Your name"
-              />
-              <input
-                id="e"
-                type="email"
-                placeholder="Your email"
-                required
-                aria-label="Your email"
-              />
-              <textarea
-                id="m"
-                rows="5"
-                placeholder="Your message"
-                required
-                aria-label="Your message"
-              ></textarea>
-              <button class="btn p" type="submit">Send by email</button>
-              <small
-                >This opens your email app with the message ready to
-                send.</small
-              >
-            </form>
-          </div>
-        </div>
-      </section>
-    </main>
+<section id="contact"><div class="wrap rv">
+<h2><small>Contact</small>Let's talk</h2>
+<div class="contact">
+<div>
+<p style="color:var(--mute);margin-bottom:16px">Open to Java backend roles. Send me a message and I will reply by email.</p>
+<ul>
+<li>Email: <a href="mailto:mdnoorishnauman@gmail.com">mdnoorishnauman@gmail.com</a></li>
+<li>Phone: <a href="tel:+919927620365">+91-9927620365</a></li>
+<li>LinkedIn: <a href="https://www.linkedin.com/in/noorish-nauman/" target="_blank" rel="noopener">noorish-nauman</a></li>
+<li>Location: Noida, India</li>
+</ul></div>
+<form id="f">
+<input id="n" placeholder="Your name" required aria-label="Your name">
+<input id="e" type="email" placeholder="Your email" required aria-label="Your email">
+<textarea id="m" rows="5" placeholder="Your message" required aria-label="Your message"></textarea>
+<button class="btn p" type="submit">Send by email</button>
+<small>This opens your email app with the message ready to send.</small>
+</form>
+</div>
+</div></section>
+</main>
 
-    <footer>
-      <div class="wrap">&copy; <span id="y"></span> Md Noorish Nauman</div>
-    </footer>
+<footer><div class="wrap">&copy; <span id="y"></span> Md Noorish Nauman</div></footer>
 
-    <script>
-      var b = document.querySelector(".burger"),
-        u = document.getElementById("menu");
-      b.addEventListener("click", function () {
-        var o = u.classList.toggle("open");
-        b.setAttribute("aria-expanded", o);
-      });
-      u.addEventListener("click", function (e) {
-        if (e.target.tagName === "A") {
-          u.classList.remove("open");
-          b.setAttribute("aria-expanded", false);
-        }
-      });
-      document.getElementById("y").textContent = new Date().getFullYear();
-      document.getElementById("f").addEventListener("submit", function (ev) {
-        ev.preventDefault();
-        var n = document.getElementById("n").value,
-          e = document.getElementById("e").value,
-          m = document.getElementById("m").value;
-        location.href =
-          "mailto:mdnoorishnauman@gmail.com?subject=" +
-          encodeURIComponent("Portfolio message from " + n) +
-          "&body=" +
-          encodeURIComponent(m + "\n\nFrom: " + n + " (" + e + ")");
-      });
-      var els = document.querySelectorAll(".rv");
-      if ("IntersectionObserver" in window) {
-        var io = new IntersectionObserver(
-          function (a) {
-            a.forEach(function (x) {
-              if (x.isIntersecting) {
-                x.target.classList.add("in");
-                io.unobserve(x.target);
-              }
-            });
-          },
-          { threshold: 0.1 },
-        );
-        els.forEach(function (x) {
-          io.observe(x);
-        });
-      } else {
-        els.forEach(function (x) {
-          x.classList.add("in");
-        });
-      }
-    </script>
-  </body>
+<script>
+var b=document.querySelector('.burger'),u=document.getElementById('menu');
+b.addEventListener('click',function(){var o=u.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+u.addEventListener('click',function(e){if(e.target.tagName==='A'){u.classList.remove('open');b.setAttribute('aria-expanded',false)}});
+document.getElementById('y').textContent=new Date().getFullYear();
+document.getElementById('f').addEventListener('submit',function(ev){
+ev.preventDefault();
+var n=document.getElementById('n').value,e=document.getElementById('e').value,m=document.getElementById('m').value;
+location.href='mailto:mdnoorishnauman@gmail.com?subject='+encodeURIComponent('Portfolio message from '+n)+'&body='+encodeURIComponent(m+'\n\nFrom: '+n+' ('+e+')');
+});
+var els=document.querySelectorAll('.rv');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(a){a.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.1});els.forEach(function(x){io.observe(x)})}else{els.forEach(function(x){x.classList.add('in')})}
+</script>
+</body>
 </html>
